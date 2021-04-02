@@ -43,7 +43,18 @@ class PolyTreeNode
 		end
 		nil
 	end
+
+	def bfs(target_val)
+		queue = [self]
+		until queue.empty?
+			first = queue.shift
+			return first if first.value == target_val
+			queue.concat(first.children) unless first.children.empty?
+		end
+		nil
+	end
 end
+
 
 a = PolyTreeNode.new(:A) #root
 b = PolyTreeNode.new(:B) #no children
@@ -58,11 +69,12 @@ a.add_child(c)
 
 # p a
 # p a.children
-puts 'there should be something below me'
-p a.dfs(:E)
+target = :E
+puts "there should be #{target} below me"
+p a.bfs(target)
 
 #        A
-#      
-#     B      C
-#
-#          D    E
+#      /  \
+#    B     C
+#		  / \
+#        D   E
