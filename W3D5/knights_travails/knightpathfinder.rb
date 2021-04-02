@@ -28,9 +28,7 @@ class KnightPathFinder
     end
 
     def build_move_tree
-        start_pos = @position
-        queue = [start]
-        
+
     end
 
 end
