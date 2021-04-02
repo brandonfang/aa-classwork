@@ -20,8 +20,6 @@ class PolyTreeNode
 			@parent = new_parent
 			@parent.children << self
 		end
-
-
 	end
 
 	def inspect
@@ -39,16 +37,18 @@ class PolyTreeNode
 
 	def dfs(target_val)
 		return self if self.value == target_val
+		return nil if self.children.empty?
 		self.children.each do |child|
-			# p child
-			next if child.children.empty?
+			p child
+			# child = E node
+			# next if child.children.empty?
+			# temp = eNode.dfs(:E)
 			temp = child.dfs(target_val)
+			return temp if temp.value == target_val
 		end
-		temp
+		# temp
+
 	end
-
-
-
 end
 
 a = PolyTreeNode.new(:A) #root
@@ -57,8 +57,8 @@ c = PolyTreeNode.new(:C) #two children
 d = PolyTreeNode.new(:D) #leaf node
 e = PolyTreeNode.new(:E) #leaf node
 
-c.add_child(e)
 c.add_child(d)
+c.add_child(e)
 a.add_child(b)
 a.add_child(c)
 
@@ -66,3 +66,9 @@ a.add_child(c)
 # p a.children
 puts 'there should be something below me'
 p a.dfs(:E)
+
+#        A
+#      
+#     B      C
+#
+#          D    E
