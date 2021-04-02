@@ -28,10 +28,35 @@ class KnightPathFinder
     end
 
     def build_move_tree
+        tree = []
+        queue = [self]
+        until queue.empty?
+            new_moves = new_move_positions(queue.shift)
+            new_moves.each do |move| # a move is [#, #]
+                queue << [@position, move]
+            end
 
+        end
+
+        tree
     end
 
 end
 
-# k = KnightPathFinder.new([0,0])
-# p k.new_move_positions([0,0])
+k = KnightPathFinder.new([0,0])
+# p k.build_move_tree
+p k.new_move_positions([3,3])
+# p k.new_move_positions([1,2])
+
+#                ______[0,0]_______
+#              /                   \
+#        ___[1,2]                 [2,1] 
+#      /     |   \               |    \ 
+# [2, 4] [3, 3] [3, 1]       [1, 3]   [4, 2]
+
+
+#
+#   [[0,0],
+#  [[0,0], [1,2]], [[0,0], [2,1]]]
+#
+#
