@@ -57,7 +57,7 @@ end
 
 
 a = PolyTreeNode.new(:A) #root
-b = PolyTreeNode.new(:B) #no children
+b = PolyTreeNode.new(:B) #no children & leaf node
 c = PolyTreeNode.new(:C) #two children
 d = PolyTreeNode.new(:D) #leaf node
 e = PolyTreeNode.new(:E) #leaf node
