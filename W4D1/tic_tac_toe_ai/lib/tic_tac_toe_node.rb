@@ -9,6 +9,17 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
+    if @board.over? 
+      return @board.winner == @next_mover_mark
+    end
+
+    # if player's turn
+    self.children.each
+    losing_node?()
+
+    # if opponent's turn
+    self.children.each
+    losing_node?()
   end
 
   def winning_node?(evaluator)
@@ -20,11 +31,11 @@ class TicTacToeNode
     result = []
     (0..2).each do |i|
       (0..2).each do |j|
-        if @board[[i,j]].empty?
-          new_board_state = @board.dup
-          new_board_state[[i, j]] == @next_mover_mark
-          new_board_state.prev_move_pos = [i, j]
-          result << TicTacToeNode.new(new_board_state, "how to get mark?", self)
+        if @board[[i, j]].nil?
+          new_board = @board.dup
+          new_board[[i, j]] = @next_mover_mark
+          next_mover_mark = self.next_mover_mark == :x ? :o : :x
+          result << TicTacToeNode.new(new_board, next_mover_mark, [i, j])
         end
       end
     end
