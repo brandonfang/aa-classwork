@@ -2,6 +2,7 @@ require_relative 'tic_tac_toe'
 
 class TicTacToeNode
   attr_reader :board, :next_mover_mark, :prev_move_pos
+  
   def initialize(board, next_mover_mark, prev_move_pos = nil)
     @board = board
     @next_mover_mark = next_mover_mark
@@ -9,7 +10,7 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
-    if @board.over?
+    if @board.over? # base case
       return @board.winner != evaluator && !@board.winner.nil?
     end
 
