@@ -22,9 +22,9 @@ class PolyTreeNode
 		end
 	end
 
-	# def inspect
-	# 	"#{@value}, #{@children}"
-	# end
+	def inspect
+		"#{@value}, #{@children}"
+	end
 
 	def add_child(child_node)
 		child_node.parent = self
@@ -54,9 +54,3 @@ class PolyTreeNode
 		nil
 	end
 end
-
-#        A
-#      /  \
-#    B     C
-#		  / \
-#        D   E

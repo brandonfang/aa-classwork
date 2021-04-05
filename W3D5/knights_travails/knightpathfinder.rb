@@ -1,4 +1,4 @@
-require_relative './PolyTreeNode.rb'
+require_relative './polytreenode.rb'
 
 class KnightPathFinder
     attr_reader :root_node
@@ -18,7 +18,7 @@ class KnightPathFinder
         moves.each do |move|
             x, y = position
             new_position = [(x + move[0]), (y + move[1])]
-            next if new_position.any? { |num| num <= 0 || num >= 7 }
+            next if new_position.any? { |num| num < 0 || num > 7 }
             answer << new_position
         end
         answer
@@ -36,18 +36,42 @@ class KnightPathFinder
         until queue.empty?
             node = queue.shift
             new_moves = new_move_positions(node.value)
-            new_moves.each do |move| # a move is [#, #]
-                temp_node = PolyTreeNode.new(move)
-                node.add_child(temp_node)
-                queue << temp_node
+            new_moves.each do |move| 
+                next_node = PolyTreeNode.new(move)
+                node.add_child(next_node)
+                queue << next_node 
             end
         end
+    end
+
+    def find_path(end_pos)
+        queue = [@root_node]
+        until queue.empty?
+            node = queue.shift
+            if node.value == end_pos
+                temp = node
+                break
+            end
+            queue.concat(node.children)
+        end
+        trace_path_back(temp)
+    end
+
+    def trace_path_back(node)
+        path = []
+        until node.parent.nil?
+            path.unshift(node.value)
+            node = node.parent
+        end
+        path.unshift(root_node.value)
+        path
     end
 
 end
 
 k = KnightPathFinder.new([0,0])
 p k.root_node
+# p k.find_path([5,7])
 # p k.new_move_positions([3,3])
 # p k.new_move_positions([1,2])
 
