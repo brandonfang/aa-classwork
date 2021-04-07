@@ -1,11 +1,19 @@
-require_relative "piece.rb"
+require_relative "piece"
+require_relative "pawn.rb"
+require_relative "knight.rb"
+require_relative "rook.rb"
+require_relative "bishop.rb"
+require_relative "queen.rb"
+require_relative "king.rb"
 require_relative "errors.rb"
 
+
 class Board
-    attr_reader :rows :null_piece
+    attr_reader :rows, :null_piece
 
     def initialize
-        @null_piece = NullPiece.instance
+        # debugger
+        # @null_piece = Board::NullPiece.instance
         @rows = create_board
     end
     
@@ -28,6 +36,7 @@ class Board
 
     private
     def create_board
+        # debugger
         board = Array.new(8) 
 
         board[0] = [
@@ -42,7 +51,7 @@ class Board
         ] 
 
         board[1] = Array.new(8) { |i| Pawn.new(:black, self, [1, i]) }
-        board[2..5] = Array.new(4) { |row| Array.new(8) { |col| @null_piece } } 
+        board[2..5] = Array.new(4) { |row| Array.new(8) { |col| nil } } 
         board[6] = Array.new(8) {|i| Pawn.new(:white, self, [6, i])}
 
         board[7] = [
@@ -61,5 +70,6 @@ class Board
  
 end
 
-# board1 = Board.new
-# board1.move([3,3], [4,4])
+board1 = Board.new()
+p board1 
+# pawn1 = Pawn.new(:white, board1, [1,1])

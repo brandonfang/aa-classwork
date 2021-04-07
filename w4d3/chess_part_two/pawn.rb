@@ -61,7 +61,7 @@ class Pawn < Piece
         end
     end 
        
-    end
+    
 
     def side_attacks # a pawn can attack diag if there is another pawn there
         if curr_color_white
