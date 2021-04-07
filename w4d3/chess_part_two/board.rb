@@ -30,14 +30,22 @@ class Board
     def create_board
         board = Array.new(8) { Array.new(8, @null_piece) }
         board.each_with_index do |row, i|
-            if [0,1,6,7].include?(i)
+            if [6,7].include?(i)
                 (0...row.length).each do |j|
-                @rows[i][j] = Piece.new(:color, self, [i, j])
+                    if 
+                @rows[i][j] = Piece.new(:white, self, [i, j])
+                end
+            elsif [0,1].include?(i)
+                (0...row.length).each do |j|
+                    if 
+                    @rows[i][j] = Piece.new(:black, self, [i, j])
                 end
             end
         end
         board 
     end
+
+  
 end
 
 # board1 = Board.new
