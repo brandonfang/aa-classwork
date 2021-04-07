@@ -28,24 +28,37 @@ class Board
 
     private
     def create_board
-        board = Array.new(8) { Array.new(8, @null_piece) }
-        board.each_with_index do |row, i|
-            if [6,7].include?(i)
-                (0...row.length).each do |j|
-                    if 
-                @rows[i][j] = Piece.new(:white, self, [i, j])
-                end
-            elsif [0,1].include?(i)
-                (0...row.length).each do |j|
-                    if 
-                    @rows[i][j] = Piece.new(:black, self, [i, j])
-                end
-            end
-        end
-        board 
-    end
+        board = Array.new(8) 
 
-  
+        board[0] = [
+            Rook.new(:black, self, [0,0]), 
+            Knight.new(:black, self, [0,1]), 
+            Bishop.new(:black, self, [0,2]), 
+            Queen.new(:black, self, [0,3]), 
+            King.new(:black, self, [0,4]), 
+            Bishop.new(:black, self, [0,5]), 
+            Knight.new(:black, self, [0,6]), 
+            Rook.new(:black, self, [0,7])
+        ] 
+
+        board[1] = Array.new(8) { |i| Pawn.new(:black, self, [1, i]) }
+        board[2..5] = Array.new(4) { |row| Array.new(8) { |col| @null_piece } } 
+        board[6] = Array.new(8) {|i| Pawn.new(:white, self, [6, i])}
+
+        board[7] = [
+            Rook.new(:white, self, [0,0]), 
+            Knight.new(:white, self, [0,1]), 
+            Bishop.new(:white, self, [0,2]), 
+            Queen.new(:white, self, [0,3]), 
+            King.new(:white, self, [0,4]), 
+            Bishop.new(:white, self, [0,5]), 
+            Knight.new(:white, self, [0,6]), 
+            Rook.new(:white, self, [0,7])
+        ] 
+
+        board
+    end
+ 
 end
 
 # board1 = Board.new
