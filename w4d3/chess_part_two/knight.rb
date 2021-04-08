@@ -1,11 +1,12 @@
 require_relative "piece.rb"
+require_relative "stepable"
 
 class Knight < Piece 
     include Stepable
 
-    def initialize
-        super()
-    end
+    # def initialize
+    #     super()
+    # end
 
     def symbols
         :N

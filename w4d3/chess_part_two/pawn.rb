@@ -2,9 +2,9 @@ require_relative "piece.rb"
 
 class Pawn < Piece 
 
-    def initialize
-        super()
-    end
+    # def initialize
+    #     super()
+    # end
 
     def symbol
         :P
