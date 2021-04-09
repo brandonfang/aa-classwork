@@ -39,19 +39,18 @@ end
 
 # list2 = [-5, -1, -3]
 # p largest_contiguous_subsum_1(list2) # => -1 (from [-1])
+#               [1,2,-4, 4,-3, 4]
+# cur sum =     [1,3,-1, 4, 1, 4]
+# largest sum = [1,3, 3, 4, 4, 5]
 
 def largest_contiguous_subsum_2(arr)
   return 0 if arr.empty?
-  max_sum = arr[0] # -5
-  cur_sum = arr[0] # -5
-  i = 0       # 0
-  (1...arr.length).each do |j| # 1
-    cur_sum += arr[j] #-5
+  max_sum = arr[0]
+  cur_sum = arr[0] 
+  (1...arr.length).each do |j| 
+    cur_sum = 0 if cur_sum < 0
+    cur_sum += arr[j]
     max_sum = cur_sum if cur_sum > max_sum
-    while cur_sum - arr[i] >= max_sum
-      cur_sum -= arr[i]
-      i+=1
-    end
   end
   max_sum
 end
@@ -59,8 +58,8 @@ end
 list = [2, 3, -6, 7, -6, 7]
 p largest_contiguous_subsum_2(list) # => 8 (from [7, -6, 7])
 
-# list2 = [-5, -1, -3]
-# p largest_contiguous_subsum_2(list2) # => -1 (from [-1])
+list2 = [-5, -1, -3]
+p largest_contiguous_subsum_2(list2) # => -1 (from [-1])
 
 list3 = [-5, 6, 2, -1, -8, -3]
 p largest_contiguous_subsum_2(list3) # => 8 (from [6, 2])
