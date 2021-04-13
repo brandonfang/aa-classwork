@@ -35,6 +35,7 @@ class DynamicArray
   end
 
   def [](i)
+
   end
 
   def []=(i, val)
@@ -48,15 +49,19 @@ class DynamicArray
   end
 
   def push(val)
+    @store.push(val)
   end
 
   def unshift(val)
+    @store.unshift(val)
   end
 
   def pop
+    @store.pop
   end
 
   def shift
+    @store.shift
   end
 
   def first
