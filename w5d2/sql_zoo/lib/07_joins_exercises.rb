@@ -44,7 +44,7 @@ def ford_films
     FROM movies 
     JOIN castings ON movies.id = castings.movie_id
     JOIN actors ON castings.actor_id = actors.id
-    WHERE name = 'Harrison Ford'
+    WHERE name = 'Harrison Ford';
   SQL
 end
 
@@ -57,7 +57,7 @@ def ford_supporting_films
     FROM movies 
     JOIN castings ON movies.id = castings.movie_id
     JOIN actors ON castings.actor_id = actors.id
-    WHERE name = 'Harrison Ford' AND ord != 1
+    WHERE name = 'Harrison Ford' AND ord != 1;
   SQL
 end
 
@@ -68,7 +68,7 @@ def films_and_stars_from_sixty_two
     FROM movies
     JOIN castings ON movies.id = movie_id
     JOIN actors ON actor_id = actors.id
-    WHERE yr = 1962 AND ord = 1
+    WHERE yr = 1962 AND ord = 1;
   SQL
 end
 
@@ -82,7 +82,7 @@ def travoltas_busiest_years
     JOIN actors ON actor_id = actors.id
     WHERE name = 'John Travolta'
     GROUP BY yr
-    HAVING COUNT(*) >= 2
+    HAVING COUNT(*) >= 2;
   SQL
 end
 
@@ -92,15 +92,15 @@ def andrews_films_and_leads
   execute(<<-SQL)
     SELECT title, name 
     FROM movies 
-    JOIN castings ON movies.id = castings.movie_id
-    JOIN actors ON castings.actor_id = actors.id
-    WHERE movies.title IN (
+    JOIN castings ON movies.id = movie_id
+    JOIN actors ON actor_id = actors.id
+    WHERE title IN (
       SELECT title 
       FROM movies
-      JOIN castings ON movies.id = castings.movie_id
-      JOIN actors ON castings.actor_id = actors.id
-      WHERE actors.name = 'Julie Andrews'
-    ) AND castings.ord = 1
+      JOIN castings ON movies.id = movie_id
+      JOIN actors ON actor_id = actors.id
+      WHERE name = 'Julie Andrews'
+    ) AND ord = 1;
   SQL
 end
 
@@ -108,9 +108,40 @@ def prolific_actors
   # Obtain a list in alphabetical order of actors who've had at least 15
   # starring roles.
   execute(<<-SQL)
-    
+    SELECT name
+    FROM actors 
+    JOIN castings ON actors.id = actor_id
+    JOIN movies ON movie_id = movies.id
+    WHERE name IN (
+      SELECT name
+      FROM movies
+      JOIN castings ON movies.id = movie_id
+      JOIN actors ON actor_id = actors.id 
+      WHERE ord = 1
+      GROUP BY name
+    ) 
+    GROUP BY name
+    HAVING COUNT(*) >= 15;
   SQL
 end
+
+p prolific_actors
+
+  # SELECT name
+  #   FROM movies 
+  #   JOIN castings ON movies.id = movie_id
+  #   JOIN actors ON actor_id = actors.id
+  #   WHERE (
+  #     SELECT name
+  #     FROM name
+  #     JOIN castings ON movies.id = movie_id
+  #     JOIN actors ON actor_id = actors.id 
+  #     GROUP BY name
+  #     HAVING COUNT(*) >= 15
+  #   )
+
+
+  #   ORDER BY name ASC
 
 def films_by_cast_size
   # List the films released in the year 1978 ordered by the number of actors

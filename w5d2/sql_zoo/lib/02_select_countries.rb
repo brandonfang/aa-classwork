@@ -37,7 +37,7 @@ def high_population_gdps
   execute(<<-SQL)
     SELECT name, gdp/population AS per_capita_gdp
     FROM countries
-    WHERE population > 200000000
+    WHERE population > 200000000;
   SQL
 end
 
@@ -48,7 +48,7 @@ def population_in_millions
   execute(<<-SQL)
     SELECT name, population/1000000 AS population_in_mills
     FROM countries
-    WHERE continent = 'South America'
+    WHERE continent = 'South America';
   SQL
 end
 
@@ -57,7 +57,7 @@ def name_and_population
   execute(<<-SQL)
     SELECT name, population
     FROM countries
-    WHERE name IN ('France', 'Germany', 'Italy')
+    WHERE name IN ('France', 'Germany', 'Italy');
   SQL
 end
 
@@ -66,6 +66,6 @@ def united_we_stand
   execute(<<-SQL)
     SELECT name
     FROM countries
-    WHERE UPPER(name) LIKE '%UNITED%'
+    WHERE UPPER(name) LIKE '%UNITED%';
   SQL
 end
