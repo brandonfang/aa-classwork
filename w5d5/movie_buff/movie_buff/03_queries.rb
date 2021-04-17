@@ -1,7 +1,7 @@
 def what_was_that_one_with(those_actors)
   # Find the movies starring all `those_actors` (an array of actor names).
   # Show each movie's title and id.
-
+  # Movie.select(:title, :id).joins(:actors).where(actors: {name: those_actors}).group('movies.id').having('COUNT(*) > ?', those_actors.length)
 end
 
 def golden_age
@@ -18,7 +18,7 @@ end
 
 def actor_out_of_work
   # Find the number of actors in the database who have not appeared in a movie
-
+  Actor.left_outer_joins(:castings).where('castings.actor_id = ?', nil).pluck(:name).length
 end
 
 def starring(whazzername)
