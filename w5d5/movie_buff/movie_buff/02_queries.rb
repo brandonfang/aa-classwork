@@ -2,7 +2,7 @@ def eighties_b_movies
   # List all the movies from 1980-1989 with scores falling between
   # 3 and 5 (inclusive).
   # Show the id, title, year, and score.
-  Movie.select(:id, :title, :yr, :score).where(yr: 1980..1989).where(score: 3..5)
+  Movie.select(:id, :title, :yr, :score).where(yr: (1980..1989)).where(score: (3..5))
 end
 
 def bad_years
@@ -23,7 +23,6 @@ def vanity_projects
 
   # Note: Directors appear in the 'actors' table.
   Movie.select('movies.id, movies.title, actors.name').joins(:actors).where(castings: {ord: 1}).where('actors.id = movies.director_id')
-  
 end
 
 def most_supportive
