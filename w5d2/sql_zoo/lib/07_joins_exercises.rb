@@ -108,50 +108,46 @@ def prolific_actors
   # Obtain a list in alphabetical order of actors who've had at least 15
   # starring roles.
   execute(<<-SQL)
-    SELECT name
-    FROM actors 
-    JOIN castings ON actors.id = actor_id
-    JOIN movies ON movie_id = movies.id
-    WHERE name IN (
-      SELECT name
-      FROM movies
-      JOIN castings ON movies.id = movie_id
-      JOIN actors ON actor_id = actors.id 
-      WHERE ord = 1
-      GROUP BY name
-    ) 
-    GROUP BY name
-    HAVING COUNT(*) >= 15;
+    SELECT actors.name
+    FROM actors
+    JOIN castings ON castings.actor_id = actors.id
+    WHERE castings.ord = 1
+    GROUP BY actors.name
+    HAVING COUNT(*) >= 15
+    ORDER BY actors.name;
   SQL
 end
 
-p prolific_actors
-
-  # SELECT name
-  #   FROM movies 
-  #   JOIN castings ON movies.id = movie_id
-  #   JOIN actors ON actor_id = actors.id
-  #   WHERE (
-  #     SELECT name
-  #     FROM name
-  #     JOIN castings ON movies.id = movie_id
-  #     JOIN actors ON actor_id = actors.id 
-  #     GROUP BY name
-  #     HAVING COUNT(*) >= 15
-  #   )
-
-
-  #   ORDER BY name ASC
 
 def films_by_cast_size
   # List the films released in the year 1978 ordered by the number of actors
   # in the cast (descending), then by title (ascending).
   execute(<<-SQL)
+    SELECT movies.title, COUNT(DISTINCT castings.actor_id) AS actor_count
+    FROM movies
+    JOIN castings ON castings.movie_id = movies.id
+    WHERE movies.yr = 1978
+    GROUP BY movies.id
+    ORDER BY COUNT(*) DESC, movies.title ASC;
   SQL
 end
 
 def colleagues_of_garfunkel
   # List all the people who have played alongside 'Art Garfunkel'.
   execute(<<-SQL)
+    SELECT a1.name
+    FROM (
+        SELECT movies.*
+        FROM movies
+        JOIN castings ON castings.movie_id = movies.id
+        JOIN actors ON actors.id = castings.actor_id
+        WHERE actors.name = 'Art Garfunkel'
+      ) AS m1
+    JOIN (
+        SELECT actors.*, castings.movie_id
+        FROM actors
+        JOIN castings ON castings.actor_id = actors.id
+        WHERE actors.name != 'Art Garfunkel'
+      ) AS a1 ON m1.id = a1.movie_id;
   SQL
 end
