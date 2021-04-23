@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "date"
+#cats
+cat2 = Cat.new( name: 'Larry', color: 'blue', sex: 'M', birth_date: DateTime.new(2021, 4, 10, 2, 0, 0), description: 'A really chill guy.' )
