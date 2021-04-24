@@ -10,3 +10,4 @@
 cat1 = Cat.create( name: 'Philip', color: 'green', sex: 'M', birth_date: DateTime.new(2021, 4, 10, 2, 0, 0), description: 'A really chill dude.' )
 cat2 = Cat.create( name: 'Larry', color: 'blue', sex: 'M', birth_date: DateTime.new(2021, 4, 10, 2, 0, 0), description: 'A really chill guy.' )
 
+
