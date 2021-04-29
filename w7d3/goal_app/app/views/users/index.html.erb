@@ -1,0 +1,7 @@
+<h1>Welcome to the Goal App</h1>
+
+<ul>All users:
+    <% @users.each do |user| %>
+        <li><%= user.username %> - <a href="<%= user_url(user) %>">Show page</a></li>
+    <% end %>
+</ul>
