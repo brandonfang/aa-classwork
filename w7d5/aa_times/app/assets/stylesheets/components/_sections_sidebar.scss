@@ -1,5 +1,4 @@
 .sections-sidebar.expand {
-
     opacity: 1;
     transition: opacity 0.3s ease-in;
     width: 190px;
@@ -8,7 +7,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
 }
 
 .sections-sidebar {
@@ -24,9 +22,7 @@
     z-index: 1;
     font-weight: 700;
     font-size: 14px;
-    border-right: 1px solid $gray;
-
-    
+    border-right: 1px solid $light-gray;
 
 
     .dropdown {
@@ -49,40 +45,38 @@
     .dropdown > ul {
         display: none;
         position: absolute;
-        left: 150px;
+        left: 160px;
         top: -15px;
         background: white;
         border: 1px solid $light-gray;
         border-radius: 3px;
         padding: 10px 15px;
         width: 200px;
-        /* use top, left, right, bottom to position */
-        .dropdown-subtitle {
+        z-index: 2;
+
+        > .dropdown-subtitle {
             font-size: 12px;
             color: $gray;
             text-transform: uppercase;
-            
         }
     }
     .dropdown:hover > ul {
         /* applies the following style to uls inside .dropdown */
         /* but only when .dropdown is being hovered over */
         display: block;
-        // left: 50px;
-        // top: 50px;
     }
     
-    .dropdown li {
+    .dropdown > ul > li {
         position: relative;
         padding: 6px 5px;
         border-radius: 3px;
     }
 
-    .dropdown li:hover {
+    .dropdown > ul > li:hover {
         background: $lighter-blue;
 
         .dropdown-subtitle {
-            background: transparent;
+            background: red;
         }
     }
 
