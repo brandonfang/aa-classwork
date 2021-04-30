@@ -1,0 +1,182 @@
+.masthead {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 90px;
+	border-top: 1px solid $light-gray;
+	border-bottom: 2px solid black;
+	padding: 8px 0;
+	font-family: $sans-serif;
+}
+
+.language-nav {
+	position: absolute;;
+	height: 11px;
+	top: -16px;
+	border-radius: 5px 5px 0 0;
+	border: 1px solid $light-gray;
+	border-bottom: none;
+	padding: 4px 9px 0 9px;
+	background: white;
+	font-size: 10px;
+	a {
+		
+	}
+	
+	> ul {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		
+		li {
+			padding: 0 4px;
+			color: $dark-gray;
+			
+			.active {
+				font-weight: 700;
+				color: black;
+			}
+		}
+		
+
+		li:hover {
+			text-decoration: underline;
+		}
+	}
+
+
+}
+
+.logo {
+	margin: 10px 0px;
+}
+
+.masthead-links {
+	font-size: 11px;
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	li {
+		padding: 0 10px;
+		border-left: 1px solid $light-gray
+	}
+
+	li:first-child { 
+		border-left: none;
+		padding-left: none;
+	}
+
+	li:last-child { 
+		padding-right: 0;
+	}
+
+	a:hover {
+		.masthead-link {
+			text-decoration: underline;
+		}
+		i {
+			text-decoration: none;
+		}
+	}
+
+
+	button {
+	}
+
+	button:hover {
+	}
+
+	a,
+	button, 
+	time {
+	}
+
+	i {
+		margin-right: 6px;
+	}
+
+	strong {
+		color: green
+	}
+}
+
+// .masthead {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	border-bottom: 2px solid black;
+// 	position: relative;
+// }
+
+// .language-nav {
+// 	position: absolute;
+// 	top: -15px;
+// 	left: calc(50% - (177.78px/2));
+// 	background: white;
+// 	border: 1px solid $light-gray;
+// 	border-bottom: none;
+// 	border-top-left-radius: 3px;
+// 	border-top-right-radius: 3px;
+
+// 	a {
+// 		margin: 0 5px;
+// 		text-transform: uppercase;
+// 		font-family: $sans-serif;
+// 		font-size: 10px;
+// 		color: $dark-gray;
+// 	}
+
+// 	ul {
+// 		display: flex;
+// 	}
+// }
+
+// .logo {
+// 	max-width: 400px;
+// 	margin-top: 10px;
+// }
+
+// .masthead-links {
+// 	display: flex;
+// 	font-family: $sans-serif;
+// 	font-size: 11px;
+// 	margin-top: 10px;
+// 	margin-bottom: 10px;
+
+// 	li {
+// 		margin-left: 10px;
+// 		border-right: 1px solid $light-gray;
+// 	}
+
+// 	button {
+// 		background: none;
+// 		padding: 0px;
+// 		color: #000;
+// 		font-weight: normal;
+// 		border: none;
+// 	}
+
+// 	button:hover {
+// 		background-color: $lightest-gray;
+// 	}
+
+// 	a,
+// 	button, 
+// 	time {
+// 		margin-right: 10px;
+// 	}
+
+// 	i {
+// 		margin-right: 5px;
+// 	}
+
+// 	strong {
+// 		color: green;
+// 	}
+// }

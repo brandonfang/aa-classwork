@@ -1,0 +1,36 @@
+
+.sections-nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    padding: 4px;
+    border-bottom: 1px solid $light-gray;
+}
+
+.sections-link, .sections-link:hover {
+    font-family: $sans-serif;
+    padding: 4px 0;
+
+    a {
+        text-decoration: none;
+        margin: 5px 2px 5px 0;
+        padding: 2px 4px;
+    }
+}
+
+.sections-link:hover {
+    background: $light-gray;
+}
+
+#all-link {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    color: $dark-gray;
+}
+#all-link:hover {
+    text-decoration: underline;
+    color: black;
+    background: transparent;
+}
