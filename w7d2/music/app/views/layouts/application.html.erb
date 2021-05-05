@@ -1,48 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Music App</title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+    <title>Music</title>
     <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
-
-    <div class='main-content'>
-      <h1 class='main-logo'>Music App</h1>
-
-      <% if logged_in? %>
-        <nav>
-          <a class='button' href="<%= bands_url %>">Take me Home</a>
-          
-          <div class='user-detail'>
-            <p>Logged in as: <%= current_user.email %></p>
-          <form action=<%= session_url %> method='post'>
-            <input
-              type="hidden"
-              name="_method"
-              value="delete">
-            <input
-              type="hidden"
-              name="authenticity_token"
-              value="<%= form_authenticity_token %>">
-            <input 
-              type="submit" value="Sign Out">
-          </form>
-          </div>
-        </nav>
-      <% end %>
-
-      <% if flash[:notice] %>
-        <p><%= flash[:notice] %></p>
-      <% end %>
-
-      <% if flash[:errors] %>
+    <% if logged_in? %>
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Sign Out</button>
+      </form>
+    <% else %>
+      <%=  %>
+      <a href="<%= session_url %>">Sign In</a>
+      <a href="<%= users_url %>">Sign Up</a>
+    <% end %>
+    
+    <% if flash[:errors] %>
         <p><%= flash[:errors].join(", ") %></p>
       <% end %>
 
-      <%= yield %>
-    </div>
-
+    <%= yield %>
   </body>
 </html>

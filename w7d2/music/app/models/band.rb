@@ -1,5 +1,32 @@
 class Band < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+    validates :name, presence: true, uniqueness: true
 
-  has_many :albums, dependent: :destroy
+    def index
+
+    end
+
+    def create
+
+    end
+
+    def new
+
+    end
+
+    def edit
+
+    end
+
+    def show
+
+    end
+
+    def update
+
+    end
+
+    def destroy
+
+    end
+
 end
