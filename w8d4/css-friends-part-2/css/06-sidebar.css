@@ -1,0 +1,24 @@
+/* PHASE 0: Sidebar */
+
+.profile-picture {
+  display: block;
+  border: 1px solid black;
+  border-radius: 5px;
+  position: relative;
+  
+}
+
+.profile-info {
+
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.profile-nav {
+
+}
+
+
+
