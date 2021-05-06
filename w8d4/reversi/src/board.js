@@ -56,10 +56,10 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
-  let x = pos[0];
-  let y = pos[1]; 
+  // let x = pos[0];
+  // let y = pos[1]; 
 
-  // let [x, y] = pos; 
+  let [x, y] = pos; 
 
   if ((x < 0 || y < 0 ) || (x > 7 || y > 7)) {
     return false; 
