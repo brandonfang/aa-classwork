@@ -107,6 +107,9 @@ function addArrays(arr1, arr2) {
 /**
  * Recursively follows a direction away from a starting position, adding each
  * piece of the opposite color until hitting another piece of the current color.
+ * if(!piecesToFlip) { [] }  /
+ * 
+ * 
  * It then returns an array of all pieces between the starting position and
  * ending position.
  *
@@ -116,37 +119,42 @@ function addArrays(arr1, arr2) {
  * Returns empty array if it hits an empty position.
  *
  * Returns empty array if no pieces of the opposite color are found.
- */
+ //[1, 1]   
 
-Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
-  if (!this.isValidPos(pos)) return [];
-  let pieces = [];
-
-  Board.DIRS.forEach(dir => {
-    let piecesBetween = [];
-    let nextPos = addArrays(pos, dir);
-    let visitedSameColor = true;
-    let visitedEmpty = true;
-    let visitedOppColor = true;
-
-    while (this.isValidPos(nextPos) && !this.isMine(nextPos, color)) {
-      if (this.isMine(nextPos, color)) visitedSameColor = false;
-      if (!this.isMine(nextPos, color)) visitedOppColor = false;
-      if (!this.isOccupied(nextPos)) visitedEmpty = false;
-    }
+ 
+ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
+  
 
 
-
-    if (!(visitedSameColor && visitedEmpty ** visitedOppColor)) {
-      piecesBetween = [];
-    }
-    pieces.push(piecesBetween);
-  })
-
-  return pieces;
+  return piecesToFlip; 
 };
 
 
+//   if (!this.isValidPos(pos)) return [];
+//   let pieces = [];
+
+//   Board.DIRS.forEach(dir => {
+//     let piecesBetween = [];
+//     let nextPos = addArrays(pos, dir);
+//     let visitedSameColor = true;
+//     let visitedEmpty = true;
+//     let visitedOppColor = true;
+
+//     while (this.isValidPos(nextPos) && !this.isMine(nextPos, color)) {
+//       if (this.isMine(nextPos, color)) visitedSameColor = false;
+//       if (!this.isMine(nextPos, color)) visitedOppColor = false;
+//       if (!this.isOccupied(nextPos)) visitedEmpty = false;
+//     }
+
+
+
+//     if (!(visitedSameColor && visitedEmpty ** visitedOppColor)) {
+//       piecesBetween = [];
+//     }
+//     pieces.push(piecesBetween);
+//   })
+
+//   return pieces;
 // this.DIRS.forEach(dir => {
 //     let piecesBetween = [];
 //     let nextPos = addArrays(pos, dir);
