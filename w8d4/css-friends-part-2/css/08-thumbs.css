@@ -1,2 +1,28 @@
 /* PHASE 2: Thumbs */
 
+.profile-friends {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-
+}
+
+.profile-friends li {
+  margin-bottom: 10px;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 58px;
+  height: 58px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.thumb::before:hover {
+  content: title;
+  padding: 15px;
+  color: white;
+  background: black;
+}
