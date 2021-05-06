@@ -175,14 +175,13 @@ Board.prototype.placePiece = function(pos, color) {
 
   for (let i = 0; i < Board.DIRS.length; i++) {
     let positions = this._positionsToFlip(pos, color, Board.DIRS[i]);
-    positionsToFlip.concat(positions); 
+    positionsToFlip = positionsToFlip.concat(positions); 
   }
 
   for (let j = 0; j < positionsToFlip.length; j++) {
-    let [x, y] = positionsToFlip[i]; 
-    this.grid[x][y].flip(); 
+    this.getPiece(positionsToFlip[j]).flip(); 
     }
-
+  
 };
 
 /**
