@@ -56,9 +56,6 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
-  // let x = pos[0];
-  // let y = pos[1]; 
-
   let [x, y] = pos; 
 
   if ((x < 0 || y < 0 ) || (x > 7 || y > 7)) {
@@ -99,6 +96,14 @@ Board.prototype.isOccupied = function (pos) {
 //   return this.getPiece(pos) !== undefined; 
 // }
 
+function addArrays(arr1, arr2) {
+  let result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    result.push(arr1[i] + arr2[i]);
+  }
+  return result;
+};
+
 /**
  * Recursively follows a direction away from a starting position, adding each
  * piece of the opposite color until hitting another piece of the current color.
@@ -112,8 +117,47 @@ Board.prototype.isOccupied = function (pos) {
  *
  * Returns empty array if no pieces of the opposite color are found.
  */
+
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
+  if (!this.isValidPos(pos)) return [];
+  let pieces = [];
+
+  Board.DIRS.forEach(dir => {
+    let piecesBetween = [];
+    let nextPos = addArrays(pos, dir);
+    let visitedSameColor = true;
+    let visitedEmpty = true;
+    let visitedOppColor = true;
+
+    while (this.isValidPos(nextPos) && !this.isMine(nextPos, color)) {
+      if (this.isMine(nextPos, color)) visitedSameColor = false;
+      if (!this.isMine(nextPos, color)) visitedOppColor = false;
+      if (!this.isOccupied(nextPos)) visitedEmpty = false;
+    }
+
+
+
+    if (!(visitedSameColor && visitedEmpty ** visitedOppColor)) {
+      piecesBetween = [];
+    }
+    pieces.push(piecesBetween);
+  })
+
+  return pieces;
 };
+
+
+// this.DIRS.forEach(dir => {
+//     let piecesBetween = [];
+//     let nextPos = addArrays(pos, dir);
+
+//     while (this.isValidPos(nextPos) && !this.isMine(nextPos, color)) {
+//       piecesBetween.push(nextPos);
+//       pos = nextPos;
+//     }
+
+//     pieces.concat(piecesBetween);
+//   });
 
 /**
  * Checks that a position is not already occupied and that the color
@@ -121,6 +165,10 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+
+
+  // call positionsToFlip and check that it's not empty
+
 };
 
 /**
@@ -130,6 +178,7 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+
 };
 
 /**
