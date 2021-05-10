@@ -74,3 +74,37 @@ function curriedSum(numArgs) {
 // markov.says.myBind2(pavlov, "meow")("Markov");
 // const notMarkovSays = markov.says.myBind2(pavlov);
 // notMarkovSays("meow", "me");
+
+
+Function.prototype.curry = function (numArgs) {
+  let args = [];
+  const that = this;
+  return function _greenCurry(arg) {
+    args.push(arg);
+    if (args.length === numArgs) {
+      return that.apply(null, args)
+    } else { return _greenCurry }
+  } 
+}
+
+Function.prototype.curry2 = function (numArgs) {
+  let args = [];
+  const that = this;
+  return function _greenCurry(arg) {
+    args.push(arg);
+    if (args.length === numArgs) {
+      return that(...args)
+    } else { return _greenCurry }
+  }
+}
+
+Function.prototype.curry3 = function (numArgs) {
+  let args = [];
+  const _greenCurry =  (arg) => {
+    args.push(arg);
+    if (args.length === numArgs) {
+      return this(...args)
+    } else { return _greenCurry }
+  }
+  return _greenCurry
+}
