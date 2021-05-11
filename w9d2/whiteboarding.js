@@ -7,32 +7,29 @@
 // Input: "cbbd"
 // Output: "bb"
 
-
-const longestPalindromicSubStr = (str) => {
-    let result = [];
+const longestPalindromicSubstring = (str) => {
+    let substrings = [];
 
     for (let i = 0; i < str.length; i++) {
         for (let j = 2; j <= str.length - i; j++) {
-            let subStr = str.slice(i, i + j);
-            let reversed = subStr.split('').reverse().join('');
-            if (subStr === reversed) result.push(subStr);
+            let substring = str.slice(i, i + j);
+            let reversed = substring.split('').reverse().join('');
+            if (substring === reversed) substrings.push(substring);
         }
     }
 
-    if (result.length === 0) return '';
+    if (substrings.length === 0) return '';
 
-    let longest = result.reduce((a, b) => {
+    let longest = substrings.reduce((a, b) => {
         return a.length > b.length ? a : b;
     });
 
     return longest;
 };
 
-console.dir(longestPalindromicSubStr('babad'));
-
-
-
-
+// console.dir(longestPalindromicSubStr('babad'));
+// console.dir(longestPalindromicSubStr('cbbd'));
+// console.dir(longestPalindromicSubStr('abcd'));
 
 // 2: Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
 // Integers in each row are sorted from left to right.
