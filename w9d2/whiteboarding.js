@@ -8,9 +8,27 @@
 // Output: "bb"
 
 
+const longestPalindromicSubStr = (str) => {
+    let result = [];
 
+    for (let i = 0; i < str.length; i++) {
+        for (let j = 2; j <= str.length - i; j++) {
+            let subStr = str.slice(i, i + j);
+            let reversed = subStr.split('').reverse().join('');
+            if (subStr === reversed) result.push(subStr);
+        }
+    }
 
+    if (result.length === 0) return '';
 
+    let longest = result.reduce((a, b) => {
+        return a.length > b.length ? a : b;
+    });
+
+    return longest;
+};
+
+console.dir(longestPalindromicSubStr('babad'));
 
 
 
