@@ -42,40 +42,7 @@ function curriedSum(numArgs) {
   };
 }
 
-
-
-
-
-
-
-// class Cat {
-//   constructor(name) {
-//     this.name = name;
-//   }
-
-//   says(sound, person) {
-//     console.log(`${this.name} says ${sound} to ${person}!`);
-//     return true;
-//   }
-// }
-
-// class Dog {
-//   constructor(name) {
-//     this.name = name;
-//   }
-// }
-
-// const markov = new Cat("Markov");
-// const pavlov = new Dog("Pavlov");
-
-// markov.says("meow", "Ned");
-// markov.says.myBind2(pavlov, "meow", "Kush")();
-// markov.says.myBind2(pavlov)("meow", "a tree");
-// markov.says.myBind2(pavlov, "meow")("Markov");
-// const notMarkovSays = markov.says.myBind2(pavlov);
-// notMarkovSays("meow", "me");
-
-
+// use an args array
 Function.prototype.curry = function (numArgs) {
   let args = [];
   const that = this;
@@ -83,10 +50,13 @@ Function.prototype.curry = function (numArgs) {
     args.push(arg);
     if (args.length === numArgs) {
       return that.apply(null, args)
-    } else { return _greenCurry }
+    } else { 
+      return _greenCurry; 
+    }
   } 
 }
 
+// use ... operator
 Function.prototype.curry2 = function (numArgs) {
   let args = [];
   const that = this;
@@ -94,17 +64,22 @@ Function.prototype.curry2 = function (numArgs) {
     args.push(arg);
     if (args.length === numArgs) {
       return that(...args)
-    } else { return _greenCurry }
+    } else { 
+      return _greenCurry;
+    }
   }
 }
 
+// use ... operator and es6 syntax
 Function.prototype.curry3 = function (numArgs) {
   let args = [];
   const _greenCurry =  (arg) => {
     args.push(arg);
     if (args.length === numArgs) {
       return this(...args)
-    } else { return _greenCurry }
+    } else { 
+      return _greenCurry; 
+    }
   }
   return _greenCurry
 }

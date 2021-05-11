@@ -7,4 +7,9 @@ export default class Level {
     ctx.fillStyle = "skyblue";
     ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
   }
+
+  animate() {
+    // process the next frame
+    // move the obstacles, calculate the score, move the bird
+  }
 }
