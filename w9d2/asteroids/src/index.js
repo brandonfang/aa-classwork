@@ -1,4 +1,4 @@
-const MovingObject = require('./movingObject.js');
+const MovingObject = require('./movingObject');
 
 // const mo = new MovingObject({
 //   pos: [80, 80],
