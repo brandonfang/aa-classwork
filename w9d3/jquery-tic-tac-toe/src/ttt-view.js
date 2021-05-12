@@ -23,16 +23,17 @@ class View {
       this.game.playMove($square.data('pos'));
     }
     if (this.game.winner()) {
-      // let $container = $('.ttt');
-      // let message = `You win, ${this.game.winner()}`
-      let $body = $('body')
-      $body.append($("<h2>You win, " + `${this.game.winner()}` + "!</h2>"))
-      let $squares = $(".cell")
-      $squares.each((i, cell) => {
-        if ($(cell).hasClass('checked') && $(cell).text() === this.game.winner()) {
-         $(cell).addClass('winner');
-        } else if ($(cell).hasClass('checked')) {
-          $(cell).addClass('loser')
+      let $body = $('body');
+      $body.append($("<h2>You win, " + `${this.game.winner()}` + "!</h2>"));
+      let $cells = $(".cell");
+      $cells.each((i, cell) => {
+        $(cell).addClass('no-hover-color');
+        if (!$(cell).hasClass('checked')) {
+          $(cell).css('background', 'white');
+        } else if ($(cell).text() === this.game.winner()) {
+          $(cell).addClass('winner');
+        } else {
+          $(cell).addClass('loser');
         }
       });
       this.endGame();
