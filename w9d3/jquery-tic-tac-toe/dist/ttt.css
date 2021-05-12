@@ -40,7 +40,11 @@ h1 {
   border: 5px solid black;
   background: gray;
   box-sizing: border-box;
-
+  font-size: 70px;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .cell:hover {
@@ -49,4 +53,13 @@ h1 {
 
 .checked {
   background-color: white;
+}
+
+.winner {
+  background-color: green;
+  color: white;
+}
+
+.loser {
+  color: red;
 }
