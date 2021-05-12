@@ -5,5 +5,5 @@ $(() => {
   // Your code here
   let game = new Game();
   let $el = $('.ttt');
-  new View(game, $el);
+  let view = new View(game, $el);
 });

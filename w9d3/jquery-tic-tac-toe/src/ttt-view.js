@@ -1,15 +1,28 @@
 class View {
   constructor(game, $el) {
     this.game = game;
-    $el.append(this.setupBoard());
+    this.$el = $el;
+    this.setupBoard();
+    console.log('HELP')
+    this.bindEvents();
   }
 
   bindEvents() {
-
+    console.log("Hellooooo")
+    let $board = $('.grid');
+    $board.on('click', 'li.cell', (e) => {
+      let $square = $(e.target);
+      this.makeMove($square);
+    })
   }
 
   makeMove($square) {
-
+    if ($square.hasClass('checked')) {
+      alert('Invalid move! Try again.');
+    } else {
+      $square.addClass('checked');
+      alert('Hello')
+    }
   }
 
   setupBoard() {
@@ -21,8 +34,7 @@ class View {
       let $li = $('<li>').addClass('cell');
       $board.append($li);
     }
-
-    return $board;
+    this.$el.append($board);
   }
 }
 

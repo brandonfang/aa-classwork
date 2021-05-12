@@ -35,7 +35,7 @@ eval("const Board = __webpack_require__(/*! ./board */ \"./src/board.js\");\ncon
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\") // require appropriate file\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\") // require appropriate file\n\n$(() => {\n  // Your code here\n  let game = new Game();\n  let $el = $('.ttt');\n  new View(game, $el);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\") // require appropriate file\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\") // require appropriate file\n\n$(() => {\n  // Your code here\n  let game = new Game();\n  let $el = $('.ttt');\n  let view = new View(game, $el);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -55,7 +55,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    $el.append(this.setupBoard());\n  }\n\n  bindEvents() {\n\n  }\n\n  makeMove($square) {\n\n  }\n\n  setupBoard() {\n    let $container = $('figure.ttt');\n    let $board = $('<ul>').addClass('grid');\n    $container.append($board);\n\n    for (let i = 0; i < 9; i++) {\n      let $li = $('<li>').addClass('cell');\n      $board.append($li);\n    }\n\n    return $board;\n  }\n}\n\nmodule.exports = View;\n\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n    this.setupBoard();\n    console.log('HELP')\n    this.bindEvents();\n  }\n\n  bindEvents() {\n    console.log(\"Hellooooo\")\n    let $board = $('.grid');\n    $board.on('click', 'li.cell', (e) => {\n      let $square = $(e.target);\n      this.makeMove($square);\n    })\n  }\n\n  makeMove($square) {\n    if ($square.hasClass('checked')) {\n      alert('Invalid move! Try again.');\n    } else {\n      $square.addClass('checked');\n      alert('Hello')\n    }\n  }\n\n  setupBoard() {\n    let $container = $('figure.ttt');\n    let $board = $('<ul>').addClass('grid');\n    $container.append($board);\n\n    for (let i = 0; i < 9; i++) {\n      let $li = $('<li>').addClass('cell');\n      $board.append($li);\n    }\n    this.$el.append($board);\n  }\n}\n\nmodule.exports = View;\n\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 

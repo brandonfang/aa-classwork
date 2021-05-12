@@ -42,3 +42,11 @@ h1 {
   box-sizing: border-box;
 
 }
+
+.cell:hover {
+  background-color: yellow;
+}
+
+.checked {
+  background-color: white;
+}
