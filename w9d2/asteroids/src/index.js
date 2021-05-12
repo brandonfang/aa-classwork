@@ -1,17 +1,13 @@
-const MovingObject = require('./movingObject');
+const Game = require('./game');
+const GameView = require('./gameView');
 
-// const mo = new MovingObject({
-//   pos: [80, 80],
-//   vel: [10, 10],
-//   radius: 50,
-//   color: "#00FF00",
-// });
-// window.MovingObject = mo;
+document.addEventListener("DOMContentLoaded", () => {
+  let canvasElement = document.getElementById("game-canvas");
+  let ctx = canvasElement.getContext("2d");
+  canvasElement.width = Game.DIM_X;
+  canvasElement.height = Game.DIM_Y;
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  let canvas = document.getElementById("game-canvas");
-  let ctx = canvas.getContext("2d");
-  window.context = ctx;
-  console.log("DOM fully loaded and parsed");
+  let game = new Game();
+  new GameView(game, ctx).start();
 });
 
