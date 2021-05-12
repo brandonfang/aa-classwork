@@ -1,5 +1,5 @@
 const Util = {
-  // allows Child to inherit Parent
+  // Allows Child to inherit Parent
   inherits(Child, Parent) {
     // function Surrogate() {};
     // Surrogate.prototype = Parent.prototype
@@ -17,15 +17,16 @@ const Util = {
   scale(vec, m) {
     return [vec[0] * m, vec[1] * m];
   },
+  // Find the distance between two positions
   distance(pos1, pos2) {
     let [x1, y1, x2, y2] = [...pos1, ...pos2];
     return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
   },
+  // Find the norm of a vector
   norm(vec) {
     return distance([0, 0], vec);
   },
   
-
 };
 
 module.exports = Util;

@@ -19,5 +19,4 @@ function Asteroid(options) {
 
 Util.inherits(Asteroid, MovingObject);
 
-
 module.exports = Asteroid;

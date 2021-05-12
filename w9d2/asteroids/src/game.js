@@ -33,8 +33,6 @@ Game.prototype.addAsteroids = function() {
 }
 
 Game.prototype.draw = function(ctx) {
-  // const canvas = document.getElementById('game-canvas');
-  // ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
   ctx.fillStyle = Game.BG_COLOR;
   ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
