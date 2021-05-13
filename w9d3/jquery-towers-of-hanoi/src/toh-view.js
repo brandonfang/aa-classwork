@@ -5,7 +5,7 @@ class View {
 
     this.setupTowers();
     this.clickTower();
-    // this.render()
+    this.render()
   }
 
   clickTower() {
@@ -15,34 +15,21 @@ class View {
   // makeMove($tower) {}
 
   setupTowers() {
-    let $board = $('<div>').addClass('board');
     for (let i = 0; i < 3; i++) {
       let $pile = $('<ul>').addClass('pile');
       for (let i = 0; i < 3; i++) {
         let $disc = $('<li>')
         $pile.append($disc);
       }
-      $board.append($pile);
+      this.$el.append($pile);
     }
 
-    // let $pile1 = $('.board:first-child');
-    $('ul li:nth-child(1)').addClass('disc-one')
-
-    // console.log($('ul.pile').eq(0));
-    // let $pile1 = $('.pile').eq(0);
-    // console.log($pile1)
-    // for (let i = 0; i < 3; i++) {
-    //   let disc = $('<li>').addClass('disc');
-    //   $pile1.append(disc);
-    // }
-
-    this.$el.append($board);
+    $('ul:first-child li:nth-child(1)').addClass('disc-one')
+    $('ul:first-child li:nth-child(2)').addClass('disc-two')
+    $('ul:first-child li:nth-child(3)').addClass('disc-three')
   }
 
-
-
   render() {
-
     
   }
 }

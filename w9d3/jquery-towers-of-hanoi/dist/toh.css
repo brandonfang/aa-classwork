@@ -19,47 +19,52 @@ h1 {
   margin: 30px;
 }
 
-.board {
+.toh {
   width: 600px;
-  height: 300px;
   display: flex;
   flex-direction: row;
   list-style: none;
 }
 
 .pile {
-  width: 200px;
-  height: 300px;
-  background: red;
-  opacity: 0.3;
-  box-sizing: border-box;
+  width: 180px;
 
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
   list-style: none;
+
+  padding-bottom: 10px;
+  border-bottom: 10px solid black;
+  cursor: pointer;
 }
 
-.disc {
-  background: purple;
-  height: 20px;
-  width: 50px;
+.pile:nth-child(2) {
+  margin: 0 30px;
+}
+
+/* disc */
+ul > li {
+  width: 180px;
+  height: 50px;
+  margin: 10px auto;
+  border-radius: 25px;
 }
 
 .disc-one {
-  background: green;
-  height: 50px;
+  width: 60px; 
+  background: gray;
 }
 
 .disc-two {
-
+  width: 120px;
+  background: gray;
+ 
 }
 
 .disc-three {
-
+  width: 180px; 
+  background: gray;
 }
 
-.test {
-  background: green;
-}
