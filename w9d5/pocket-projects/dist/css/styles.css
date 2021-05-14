@@ -1,15 +1,24 @@
-
 html {
   box-sizing: border-box;
-  background: #A9DBB8;
+  background: #a9dbb8;
+}
+
+body {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
-  color: #F0F2EF;
+  color: #f0f2ef;
   font-family: 'helvetica neue';
   font-size: 20px;
   font-weight: 200;
+}
+
+.drop-down-dog-nav {
+  position: absolute;
 }
 
 .header {
@@ -36,7 +45,7 @@ h1 {
 
 .slide {
   opacity: 0;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .align-left.slide {
@@ -52,10 +61,6 @@ h1 {
   transform: translateX(0%) scale(1);
 }
 
-.hide{
+.hide {
   display: none;
-}
-
-.drop_down-dog-list{
-  
 }

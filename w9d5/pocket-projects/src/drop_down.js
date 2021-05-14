@@ -36,20 +36,16 @@ const attachDogLinks = (dogLinks) => {
 }
 
 let dropDownToggle = document.querySelector(".drop-down-dog-nav");
-console.log(dropDownToggle);
 let dropDown = document.getElementsByClassName("drop-down-dog-list")[0];
-console.log(dropDown);
 dropDown.classList.add("hide");
 
-dropDownToggle.addEventListener("mouseenter", function(e){
+dropDownToggle.addEventListener("mouseenter", function(e) {
   dropDown.classList.remove("hide");
-})
+});
 
-dropDownToggle.addEventListener("mouseleave", function(e){
+dropDownToggle.addEventListener("mouseleave", function(e) {
   dropDown.classList.add("hide");
-})
-
+});
 
 let dogLinks = dogLinkCreator(dogs);
 attachDogLinks(dogLinks);
-
