@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AjaxTwitter</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="header-nav">
+      <ul class="nav-links">
+        <li><a href="<%= feed_url %>">Feed</a></li>
+        <li><a href="<%= search_users_url %>">User Search</a></li>
+      </ul>
+
+      <% if current_user %>
+        <form action="/session" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input
+            type="hidden"
+            name="authenticity_token"
+            value="<%= form_authenticity_token %>">
+
+          <button type="submit">Logout!</button>
+        </form>
+      <% end %>
+    </nav>
+    
+    <%= yield %>
+  </body>
+</html>
