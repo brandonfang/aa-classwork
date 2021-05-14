@@ -1,5 +1,8 @@
 import {htmlGenerator} from "./warmup";
 
+let clockElement = document.getElementById("clock");
+
+
 class Clock {
   constructor() {
     // 1. Create a Date object.
@@ -9,7 +12,6 @@ class Clock {
     this.hours = currentTime.getHours();
     this.minutes = currentTime.getMinutes();
     this.seconds = currentTime.getSeconds();
-    this.clockDIV = document.getElementById("clock");
 
     // 3. Call printTime.
     this.printTime();
@@ -24,7 +26,7 @@ class Clock {
 
     // Use console.log to print it.
     // console.log(timeString);
-    htmlGenerator(timeString, this.clockDIV)
+    htmlGenerator(timeString, clockElement);
   }
 
   _tick() {
