@@ -23,5 +23,33 @@ const dogLinkCreator = (dogs) => {
     liEle.append(aEle);
     dogLinks.push(liEle);
   });
+
+  return dogLinks;
 };
+
+const attachDogLinks = (dogLinks) => {
+  let dropDownElement = document.getElementsByClassName("drop-down-dog-list")[0];
+
+  for(let i = 0; i < dogLinks.length; i++){
+    dropDownElement.append(dogLinks[i]);
+  }
+}
+
+let dropDownToggle = document.querySelector(".drop-down-dog-nav");
+console.log(dropDownToggle);
+let dropDown = document.getElementsByClassName("drop-down-dog-list")[0];
+console.log(dropDown);
+dropDown.classList.add("hide");
+
+dropDownToggle.addEventListener("mouseenter", function(e){
+  dropDown.classList.remove("hide");
+})
+
+dropDownToggle.addEventListener("mouseleave", function(e){
+  dropDown.classList.add("hide");
+})
+
+
+let dogLinks = dogLinkCreator(dogs);
+attachDogLinks(dogLinks);
 
