@@ -9,16 +9,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/drop_down.js":
-/*!**************************!*\
-  !*** ./src/drop_down.js ***!
-  \**************************/
-/***/ (() => {
-
-eval("\nconst dogs = {\n  \"Corgi\": \"https://www.akc.org/dog-breeds/cardigan-welsh-corgi/\",\n  \"Australian Shepherd\": \"https://www.akc.org/dog-breeds/australian-shepherd/\",\n  \"Affenpinscher\": \"https://www.akc.org/dog-breeds/affenpinscher/\",\n  \"American Staffordshire Terrier\": \"https://www.akc.org/dog-breeds/american-staffordshire-terrier/\",\n  \"Tosa\": \"https://www.akc.org/dog-breeds/tosa/\",\n  \"Labrador Retriever\": \"https://www.akc.org/dog-breeds/labrador-retriever/\",\n  \"French Bulldog\": \"https://www.akc.org/dog-breeds/french-bulldog/\" \n};\n\nconst dogLinkCreator = (dogs) => {\n  let dogLinks = [];\n\n  Object.entries(dogs).forEach((dog) => {\n    \n    const [key, value] = dog;\n    let liEle = document.createElement('li');\n    liEle.classList.add('dog-link');\n    let aEle = document.createElement('a');\n    aEle.innerHTML = key;\n    aEle.setAttribute('href', value);\n    liEle.append(aEle);\n    dogLinks.push(liEle);\n  });\n\n  return dogLinks;\n};\n\nconst attachDogLinks = (dogLinks) => {\n  let dropDownElement = document.getElementsByClassName(\"drop-down-dog-list\")[0];\n\n  for(let i = 0; i < dogLinks.length; i++){\n    dropDownElement.append(dogLinks[i]);\n  }\n}\n\nlet dropDownToggle = document.querySelector(\".drop-down-dog-nav\");\nlet dropDown = document.getElementsByClassName(\"drop-down-dog-list\")[0];\ndropDown.classList.add(\"hide\");\n\ndropDownToggle.addEventListener(\"mouseenter\", function(e) {\n  dropDown.classList.remove(\"hide\");\n});\n\ndropDownToggle.addEventListener(\"mouseleave\", function(e) {\n  dropDown.classList.add(\"hide\");\n});\n\nlet dogLinks = dogLinkCreator(dogs);\nattachDogLinks(dogLinks);\n\n\n//# sourceURL=webpack:///./src/drop_down.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -26,7 +16,17 @@ eval("\nconst dogs = {\n  \"Corgi\": \"https://www.akc.org/dog-breeds/cardigan-w
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./drop_down */ \"./src/drop_down.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_drop_down__WEBPACK_IMPORTED_MODULE_0__);\n// import clock from \"./clock\";\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _todo_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todo_list */ \"./src/todo_list.js\");\n/* harmony import */ var _todo_list__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_todo_list__WEBPACK_IMPORTED_MODULE_0__);\n// import clock from \"./clock\";\n// import { dropDown } from \"./drop_down\";\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/todo_list.js":
+/*!**************************!*\
+  !*** ./src/todo_list.js ***!
+  \**************************/
+/***/ (() => {
+
+eval("\nlet toDoUl = document.querySelector('ul.todos');\nlet toDoForm = document.querySelector('form.add-todo-form');\n\nlet lsToDoItems = JSON.parse(localStorage.getItem('toDoitems')) || [];\n\nconst addToDo = (e) => {\n  e.preventDefault();\n\n  let input = document.querySelector('input[name=\"add-todo\"]');\n  let item = { value: input.value };\n  item.done = false;\n  lsToDoItems.push(item);\n  localStorage.setItem('toDoItems', JSON. stringify(lsToDoItems));\n\n  lsToDoItems.forEach((item) => {\n    let listItem = document.createElement(\"li\");\n    let listForm = document.createElement(\"form\");\n    let check = document.createElement(\"input\").setAttribute(\"type\", \"checkbox\")\n      //.setAttribute(\"checked\", true)\n    listForm.append(check);\n    listItem.append(listForm);\n    toDoUl.appendChild(listItem);\n  })\n\n  toDoUl\n  \n  toDoForm.reset();\n};\n\n\ntoDoForm.addEventListener('submit', addToDo);\n\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/todo_list.js?");
 
 /***/ })
 

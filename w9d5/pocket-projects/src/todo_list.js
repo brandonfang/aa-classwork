@@ -12,6 +12,18 @@ const addToDo = (e) => {
   item.done = false;
   lsToDoItems.push(item);
   localStorage.setItem('toDoItems', JSON. stringify(lsToDoItems));
+
+  lsToDoItems.forEach((item) => {
+    let listItem = document.createElement("li");
+    let listForm = document.createElement("form");
+    let check = document.createElement("input").setAttribute("type", "checkbox")
+      //.setAttribute("checked", true)
+    listForm.append(check);
+    listItem.append(listForm);
+    toDoUl.appendChild(listItem);
+  })
+
+  toDoUl
   
   toDoForm.reset();
 };
