@@ -6,6 +6,7 @@ class Clock extends React.Component {
     this.state = {
       time: new Date()
     }
+    this.tick = this.tick.bind(this);
   }
 
   tick() {
@@ -14,13 +15,21 @@ class Clock extends React.Component {
   }
 
   componentDidMount() {
+    this.id = setInterval(this.tick, 1000);
     
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.id);
+    this.id = 0;
+    console.log('willunmount')
   }
 
   render() {
     return (
       <div>
-        <h1>Hello world</h1>
+        <h1>{this.state.time.toTimeString().split(' ')[0]}</h1>
+        
       </div>
     );
   }
