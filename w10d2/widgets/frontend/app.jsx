@@ -1,6 +1,6 @@
 import React from 'react';
 import Clock from './clock';
-// import Tabs from './tabs';
+import Tabs from './tabs';
 // import Weather from './clock';
 // import AutoComplete from './autocomplete';
 
