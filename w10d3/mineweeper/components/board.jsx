@@ -11,21 +11,20 @@ class Board extends React.Component {
 	}
 
 	render() {
-    // console.log(this.props);
-    // console.log(this.props.board);
 		return (
-			<div>
+			<div className="board">
         {this.props.board.grid.map((row, i) => {
-          <div key={i}>
-            {console.log(row)}
+          return (<div key={i} className="row">
+            
             {row.map((tile, j) => {
-              <Tile 
+              return (<Tile 
                 tile={tile}
                 key={`${i}, ${j}`}
                 updateGame={this.props.updateGame}
-              />
+              />)
             })}
-          </div>
+
+          </div>)
         })}			 
 			</div>
 		)
