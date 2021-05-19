@@ -20,10 +20,9 @@ class Board extends React.Component {
             {console.log(row)}
             {row.map((tile, j) => {
               <Tile 
+                tile={tile}
                 key={`${i}, ${j}`}
                 updateGame={this.props.updateGame}
-                board={this.props.board}
-                position={[i, j]}
               />
             })}
           </div>
