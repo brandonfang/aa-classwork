@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './react_minesweeper.jsx',
+  entry: './components/react_minesweeper.jsx',
   output: {
     path: path.resolve(__dirname),
     filename: 'bundle.js',
