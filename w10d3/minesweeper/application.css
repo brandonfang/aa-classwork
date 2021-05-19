@@ -5,16 +5,15 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center
+  align-items: center;
 }
 
 h1 {
   font-size: 24px;
-  margin: 32px 0;;
 }
 
 p {
-  margin: 8px 0;
+  /* margin: 8px 0; */
 }
 
 .tile {
@@ -46,7 +45,38 @@ p {
   justify-content: center;
 }
 
+.modal {
+  position: absolute;
+  top: 50%;
+}
 
+.modal-form {
+  margin: 20px;
+  padding: 20px;
+  background: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  height: 75px;
+}
 
+.modal-form
 
+.is-open {
+  display: block;
+}
+
+.is-closed {
+  display: none;
+}
+
+.modal-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
 

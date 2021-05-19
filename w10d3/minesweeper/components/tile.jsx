@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Minesweeper from '../minesweeper';
 
 class Tile extends React.Component {
   constructor(props) {
@@ -20,7 +19,6 @@ class Tile extends React.Component {
     if (this.props.tile.flagged) {
       text = '⚑';
       className += ' flagged'
-      console.log('hello')
     }
     if (this.props.tile.bombed && this.props.tile.explored) {
       text = '☢';

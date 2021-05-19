@@ -10,6 +10,7 @@ class Game extends React.Component {
       message: ""
     };
     this.updateGame = this.updateGame.bind(this);
+    this.restartGame = this.restartGame.bind(this);
   }
 
   updateGame(tile, altKeyPressed) {
@@ -29,6 +30,13 @@ class Game extends React.Component {
     }
   }
 
+  restartGame() {
+    // console.log(this.state);
+    // const board = new Minesweeper.Board(9, 5);
+    // this.setState({ board });
+    this.setState({ board: new Minesweeper.Board(9, 5) });
+  }
+
   render() {
     return (
       <div className="game-wrapper">
@@ -36,8 +44,12 @@ class Game extends React.Component {
         <p>Click to explore a tile.</p>
         <p>Alt + click to flag a tile.</p>
         <Board board={this.state.board} updateGame={this.updateGame} />
-        <div class="modal">
-          {this.state.message}
+        <div className="modal">
+            <div className="modal-message">
+              {this.state.message}
+            </div>
+            <button onClick={this.restartGame}>Play again!</button>
+          <div className="modal-screen is-closed"></div>
         </div>
       </div>
     );
