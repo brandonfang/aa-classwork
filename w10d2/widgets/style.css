@@ -21,6 +21,8 @@ ol, ul {
 }
 
 h2 {
+  font-size: 28px;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -50,14 +52,6 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* Clearfix */
-
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
 .wrapper {
   margin: 48px;
 }
@@ -68,7 +62,8 @@ input[type="submit"] {
   color: white;
   padding: 24px;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
+  margin-bottom: 40px;
 }
 
 .clock-row {
@@ -78,23 +73,30 @@ input[type="submit"] {
   align-items: center;
 }
 
+.weather-wrapper {
+  border: 2px solid black;
+  background: lightgreen;
+  padding: 24px;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
 .flex-widget-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 40px;
+}
 
+.flex-widget-element {
+  width: 45%;
 }
 
 .tabs-wrapper {
-  /* border: 2px solid black; */
-  /* background: lightblue; */
-  color: white;
-  font-size: 18px;
-  font-weight: 400;
   width: 100%;
   height: 250px;
+  margin-bottom: 40px;
 }
 
 .header-list-wrapper {
@@ -108,12 +110,25 @@ input[type="submit"] {
 .tab-header {
   border: 2px solid black;
   background: lightblue;
-  width: 70px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
   text-align: center;
   color: black;
+  font-size: 20px;
+  font-weight: 400;
   padding: 8px;
   border-radius: 12px 12px 0 0;
+}
 
+.tab-header:hover {
+  background: black;
+  color: white;
+}
+
+.current-tab {
+  font-weight: 700;
+  border-bottom: 0;
 }
 
 .tabs-content {
@@ -127,15 +142,10 @@ input[type="submit"] {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: white;
   font-weight: 500;
   font-size: 20px;
 }
-
-#current-tab {
-  font-weight: 700;
-  border-bottom: 0;
-}
-
 
 .autocomplete-wrapper {
   border: 2px solid black;
@@ -144,7 +154,8 @@ input[type="submit"] {
   padding: 24px;
   font-size: 18px;
   font-weight: 600;
-  width: 210px;
+  /* width: 100%; */
   height: 250px;
+  margin-bottom: 40px;
 }
 

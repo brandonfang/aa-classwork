@@ -3,15 +3,15 @@ import React from 'react';
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.setCurrentTab = this.setCurrentTab.bind(this);
+    // this.activeClass
 
-    console.log(this.props);
+    this.setCurrentTab = this.setCurrentTab.bind(this);
   }
 
   setCurrentTab(e) {
     e.preventDefault();
-    this.props.setTabIdx(this.props.data.index);
-    console.log("tab header was clicked");
+    this.props.setTabIndex(this.props.index);
+    // console.log("tab header was clicked");
   }
 
   render() {

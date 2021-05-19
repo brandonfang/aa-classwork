@@ -1,7 +1,7 @@
 import React from 'react';
 import Clock from './clock';
 import Tabs from './tabs';
-// import Weather from './clock';
+import Weather from './weather';
 import Autocomplete from './autocomplete';
 
 const tabsData = [
@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="wrapper">
       <Clock />
-      {/* <Weather /> */}
+      <Weather />
       <div className="flex-widget-wrapper">
         <Tabs data={tabsData}/>
         <Autocomplete />

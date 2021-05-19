@@ -5,39 +5,34 @@ class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTabIdx: 0,
-      currentTitle: this.props.data[0].title,
-      currentContent: this.props.data[0].content
+      currentTabIndex: 0,
     }
-    this.updateTab = this.updateTab.bind(this);
-    this.setTabIdx = this.setTabIdx.bind(this);
+    this.setTabIndex = this.setTabIndex.bind(this);
   }
 
-  updateTab() {
-    let currentTitle = this.props.data[this.currentTabIdx].title
-    this.setState({ currentTitle });
-    let currentContent = this.props.data[this.currentTabIdx].content
-    this.setState({ currentContent});
-  }
-
-  setTabIdx(idx) {
-    const currentTabIdx = idx; 
-    this.setState({ currentTabIdx }, this.updateTab);
+  setTabIndex(i) {
+    const currentTabIndex = i; 
+    this.setState({ currentTabIndex }, );
   }
 
   render() {
     const headerList = this.props.data.map((ele, i) => {
-      return <Header data={ele} index={i} key={i} setTabIdx={this.setTabIdx} />
+      return <Header data={ele} key={i} setTabIndex={this.setTabIndex} index={i}/>
     });
 
+    const currentContent = this.props.data[this.state.currentTabIndex].content;
+    // console.log(currentContent);
+
     return (
-      <div>
+      <div className="flex-widget-element">
         <h2>Tabs</h2>
         <div className='tabs-wrapper'>
           <ul className="header-list-wrapper">
-            {headerList}
+            { headerList }
           </ul>
-          <article className="tabs-content">{ this.state.currentContent }</article>
+          <article className="tabs-content">
+            { currentContent }
+            </article>
         </div>
       </div>
     );

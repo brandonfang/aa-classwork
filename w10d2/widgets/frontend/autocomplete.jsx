@@ -7,7 +7,7 @@ class Autocomplete extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="flex-widget-element">
         <h2>Autocomplete</h2>
         <div className='autocomplete-wrapper'>
           
