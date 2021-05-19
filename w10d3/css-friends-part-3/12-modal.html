@@ -38,6 +38,7 @@
         </li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Settings</a></li>
+        <li><a href="#" class="js-modal-open">Sign In</a></li>
       </ul>
 
     </nav>
@@ -232,16 +233,35 @@
 
   </footer>
 
-  <div class="modal">
-    <div class="modal-screen">
-
-    </div>
+  <div class="modal is-open">
     <div class="modal-form">
 
+      <span class="modal-close js-modal-close">&times;</span>
+
+      <h1>Welcome</h1>
+      <p>Please sign in to continue.</p>
+      
+      <div class="input">
+        <label for="form-email">Email</label>
+        <input type="text" id="form-email">
+      </div>
+
+      <div class="input">
+        <label for="form-password">Password</label>
+        <input type="password" id="form-password">
+      </div>
+      
+
+      <div class="submit">
+        <button>Sign In</button>
+        <span class="button-alternative">or <strong class="js-modal-close">Cancel</strong></span>
+      </div>
+
     </div>
+    <div class="modal-screen js-modal-close"></div>
   </div>
 
-  <script src="../shared/js/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>
     $(function () {
 
@@ -257,6 +277,6 @@
 
     });
   </script>
-  
+
 </body>
 </html>
