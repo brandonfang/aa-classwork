@@ -1,37 +1,47 @@
 import React from 'react';
-import Header from 'header';
+import Header from './header';
 
 class Tabs extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentTabIdx: 0,
-            currentTitle: this.props[currentTabIdx].title,
-            currentContent: this.props[currentTabIdx].content
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTabIdx: 0,
+      currentTitle: this.props.data[0].title,
+      currentContent: this.props.data[0].content
     }
+    this.updateTab = this.updateTab.bind(this);
+    this.setTabIdx = this.setTabIdx.bind(this);
+  }
 
-    setTabIdx(idx) {
-        const currentTabIdx = idx; 
-        this.setState({ currentTabIdx }, () => {
-            
-        });
+  updateTab() {
+    let currentTitle = this.props.data[this.currentTabIdx].title
+    this.setState({ currentTitle });
+    let currentContent = this.props.data[this.currentTabIdx].content
+    this.setState({ currentContent});
+  }
 
-    }
+  setTabIdx(idx) {
+    const currentTabIdx = idx; 
+    this.setState({ currentTabIdx }, this.updateTab);
+  }
 
-    render() {
-        return (
-            <div>
-                <ul>
-                    {this.props.map( (ele, i) => {
-                        <Header title={ele.title} setTabIdx={this.setTabIdx} index={i}/>
-                    })}
-                </ul>
-                <article>{ this.state.currentContent }</article>
+  render() {
+    const headerList = this.props.data.map((ele, i) => {
+      return <Header data={ele} index={i} key={i} setTabIdx={this.setTabIdx} />
+    });
 
-            </div>
-        )
-    }
+    return (
+      <div>
+        <h2>Tabs</h2>
+        <div className='tabs-wrapper'>
+          <ul className="header-list-wrapper">
+            {headerList}
+          </ul>
+          <article className="tabs-content">{ this.state.currentContent }</article>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Tabs;
