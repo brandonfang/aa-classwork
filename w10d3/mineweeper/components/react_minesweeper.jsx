@@ -4,6 +4,6 @@ import Game from './game'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  console.log(root)
+  // console.log(root)
   ReactDOM.render(<Game/>, root);
 });

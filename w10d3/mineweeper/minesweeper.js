@@ -1,10 +1,10 @@
 export class Tile {
   constructor(board, pos) {
-      this.board = board;
-      this.pos = pos;
-      this.bombed = false;
-      this.explored = false;
-      this.flagged = false;
+    this.board = board;
+    this.pos = pos;
+    this.bombed = false;
+    this.explored = false;
+    this.flagged = false;
   }
 
   adjacentBombCount() {
