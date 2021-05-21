@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import configureStore from './store/store';
+import Root from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("root");
-  
-  ReactDOM.render(<h1>Todo App</h1>, root);
+  const store = configureStore();
+  window.store = store;
+  // window.receiveTodo = receiveTodo;
+
+
+  ReactDOM.render(<Root store={store} />, document.getElementById("root"));
 });
