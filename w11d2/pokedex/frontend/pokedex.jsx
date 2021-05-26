@@ -18,5 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store}/>, root);
 });
 
-const getSuccess = (pokemon) => console.log(receiveAllPokemon(pokemon));
-fetchAllPokemon().then(getSuccess);
+// const getSuccess = (pokemon) => console.log(receiveAllPokemon(pokemon));
+// fetchAllPokemon().then(getSuccess);
