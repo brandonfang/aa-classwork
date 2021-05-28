@@ -24,14 +24,18 @@ export const login = (user) => (dispatch) => (
     .catch((errors) => dispatch(receiveErrors(errors)))
 );
 
-export const logout = () => (dispatch) =>
+export const logout = () => (dispatch) => (
   APIUtil.logout()
-    .then(() => dispatch(logoutCurrentUser()))
-    .catch((errors) => dispatch(receiveErrors(errors))
+    .then(
+      () => dispatch(logoutCurrentUser()),
+      (errors) => dispatch(receiveErrors(errors))
+    )
 );
 
 export const signup = (user) => (dispatch) => (
   APIUtil.signup(user)
-    .then((user) => dispatch(receiveCurrentUser(user)))
-    .catch((errors) => dispatch(receiveErrors(errors)))
+    .then(
+      (user) => dispatch(receiveCurrentUser(user)), 
+      (errors) => dispatch(receiveErrors(errors))
+    )
 );
